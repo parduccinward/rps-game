@@ -35,6 +35,16 @@ function validateMove(move){
     }
 }
 
+function goodMove(){
+    alert("Good move!");
+    return true;
+}
+
+function badMove(){
+    alert("Bad move! Please try again:");
+    return false;
+}
+
 // make game case-insensitive
 // make a return of the game
 
