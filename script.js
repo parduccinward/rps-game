@@ -16,6 +16,7 @@ function getCPUPlay(){
 }
 
 function getHumanPlay(){
+    let goodMove = false;
     while(goodMove==false){
         let humanMove = prompt("Please enter your move:");
         goodMove = validateMove(humanMove.toLowerCase());
