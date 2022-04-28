@@ -58,19 +58,19 @@ function badMove(){
 
 function roundWinner(cpuPlay, humanPlay){
     if (cpuPlay === humanPlay){
-        console.log("Tie game");
+        return ("Tie game");
     }else if (cpuPlay === "rock" && humanPlay === "scissors"){
-        console.log("Rock beats scissors. Computer won this round!");
+        return "Rock beats scissors. Computer won this round!"
     }else if (cpuPlay === "rock" && humanPlay === "paper"){
-        console.log("Paper beats rock. You won this round!");
+        return "Paper beats rock. You won this round!"
     }else if (cpuPlay === "paper" && humanPlay === "rock"){
-        console.log("Paper beats rock. Computer won this round!");
+        return "Paper beats rock. Computer won this round!"
     }else if (cpuPlay === "paper" && humanPlay === "scissors"){
-        console.log("Scissors beats paper. You won this round!");
+        return"Scissors beats paper. You won this round!"
     }else if (cpuPlay === "scissors" && humanPlay === "rock"){
-        console.log("Rock beats scissors. You won this round!");
+        return"Rock beats scissors. You won this round!"
     }else if (cpuPlay === "scissors" && humanPlay === "paper"){
-        console.log("Scissors beats paper. Computer won this round!");
+        return"Scissors beats paper. Computer won this round!"
     }
 }
 
