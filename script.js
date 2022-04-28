@@ -1,8 +1,10 @@
 // a function that creates a computer play -> he sends to you a rock, paper or scissors
 // a function that creates your play -> a popup window if the user doesn't input a valid move
-// a function that takes computers game and your game
+// a function that is a round game between computer and you
 // a function that decides who won the game !
-// a function that envolves a single game
+// a function that games 5 rounds and decide winner
+
+
 
 function getCPUPlay(){
     let computerMove = Math.floor(Math.random()*(3)+1);
