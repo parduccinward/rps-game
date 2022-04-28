@@ -4,13 +4,38 @@
 // a function that decides who won the round!
 // a function that games 5 rounds and decide winner
 // a function that decides who won the game!
+// make game case-insensitive
+// make a return of the game
+
+// happy codding :leocheers:
+
+mainGame();
+
+function mainGame(){
+    let cpuPoints = 0;
+    let humanPoints = 0;
+    for (let i = 0; i<5;i++){
+        let pointsWinner = gameRound();
+        (pointsWinner=="cpu") ? cpuPoints++ : humanPoints++;
+    }
+    declareWinner(cpuPoints,humanPoints);
+}
 
 function gameRound(){ //function where the computer and the human battles to death at rps :D
     let computerSelection = getCPUPlay();
     console.log(computerSelection);
     let humanSelection = getHumanPlay();
-    roundWinner(computerSelection, humanSelection);
+    let winner = roundWinner(computerSelection, humanSelection);
+    if (winner == "tie"){
+        gameRound();
+    }
+    return winner;
 }
+
+function declareWinner(cpuPoints,humanPoints){
+    (cpuPoints>humanPoints) ? alert("Computer won the game! =(") : alert("You won the game! Congrats =)");
+}
+
 
 function getCPUPlay(){
     let computerMove = Math.floor(Math.random()*(3)+1);
@@ -58,23 +83,25 @@ function badMove(){
 
 function roundWinner(cpuPlay, humanPlay){
     if (cpuPlay === humanPlay){
-        alert("Tie game");
+        alert("Tie game. Let's play this round again!");
+        return "tie"
     }else if (cpuPlay === "rock" && humanPlay === "scissors"){
-        alert("Rock beats scissors. Computer won this round!");
+        alert("Rock beats scissors. Computer won this round! D:");
+        return "cpu"
     }else if (cpuPlay === "rock" && humanPlay === "paper"){
-        alert("Paper beats rock. You won this round!");
+        alert("Paper beats rock. You won this round! :D");
+        return "human"
     }else if (cpuPlay === "paper" && humanPlay === "rock"){
-        alert("Paper beats rock. Computer won this round!");
+        alert("Paper beats rock. Computer won this round! D:");
+        return "cpu"
     }else if (cpuPlay === "paper" && humanPlay === "scissors"){
-        alert("Scissors beats paper. You won this round!");
+        alert("Scissors beats paper. You won this round! :D");
+        return "human"
     }else if (cpuPlay === "scissors" && humanPlay === "rock"){
-        alert("Rock beats scissors. You won this round!");
+        alert("Rock beats scissors. You won this round! :D");
+        return "human"
     }else if (cpuPlay === "scissors" && humanPlay === "paper"){
-        alert("Scissors beats paper. Computer won this round!");
+        alert("Scissors beats paper. Computer won this round! D:");
+        return "cpu"
     }
 }
-
-// make game case-insensitive
-// make a return of the game
-
-// happy codding :leocheers:
