@@ -26,13 +26,13 @@ function getHumanPlay(){
 function validateMove(move){
     switch(move){
         case "rock":
-            goodMove()
+            return goodMove();
         case "paper":
-            goodMove()
+            return goodMove();
         case "scissors":
-            goodMove()
+            return goodMove();
         default:
-            badMove();
+            return badMove();
     }
 }
 
