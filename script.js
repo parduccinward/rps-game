@@ -22,6 +22,18 @@ function getHumanPlay(){
     }
 }
 
+function validateMove(move){
+    switch(move){
+        case "rock":
+            goodMove()
+        case "paper":
+            goodMove()
+        case "scissors":
+            goodMove()
+        default:
+            badMove();
+    }
+}
 
 // make game case-insensitive
 // make a return of the game
