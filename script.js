@@ -23,7 +23,6 @@ function mainGame(){
 
 function gameRound(){ //function where the computer and the human battles to death at rps :D
     let computerSelection = getCPUPlay();
-    console.log(computerSelection);
     let humanSelection = getHumanPlay();
     let winner = roundWinner(computerSelection, humanSelection);
     if (winner == "tie"){
