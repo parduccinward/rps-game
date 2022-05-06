@@ -1,13 +1,3 @@
-// a function that creates a computer play -> he sends to you a rock, paper or scissors
-// a function that creates your play -> a popup window if the user doesn't input a valid move
-// a function that is a round game between computer and you
-// a function that decides who won the round!
-// a function that games 5 rounds and decide winner
-// a function that decides who won the game!
-// make game case-insensitive
-// make a return of the game
-
-// happy codding :leocheers:
 
 mainGame();
 
