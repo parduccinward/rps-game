@@ -1,5 +1,5 @@
 
-mainGame();
+// mainGame();
 
 function mainGame(){
     let cpuPoints = 0;
