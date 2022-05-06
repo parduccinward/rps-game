@@ -1,18 +1,78 @@
+@font-face {
+    font-family: 'true_crimesregular';
+    src: url('fonts/true-crimes-webfont.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     height: 100vh;
     margin: 0;
-    font-family: Roboto, sans-serif;
+    font-family: true_crimesregular, sans-serif;
     overflow: hidden;
     display:flex;
     flex-direction: column;
+    background-color:#3A3335;
+    color:#fffdfa;
 }
 
 .layout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     height:95%;
+}
+
+.layout-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-image img{
+    height: 200px;
+    width:auto;
+    padding:35px 70px;
+}
+
+.human-play, .cpu-play{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 30px;
+}
+
+.human-score, .cpu-score{
+    padding: 15px 30px;
+    font-size: 30px;
+    border: 1px solid #D81E5B;
+}
+
+.score-container, .result-container{
+    display: flex;
+    justify-content:center;
+}
+
+.result-container{
+    font-size: 40px;
+    padding:36px;
+}
+
+.vs-text{
+    align-self: center;
+}
+
+button {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #3A3335;
+    color: #D81E5B;
+    border-color: #D81E5B;
 }
 
 .footer{
     align-self:center;
+    font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .game-container{
