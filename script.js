@@ -1,3 +1,10 @@
+// reestructure there is not mainGame anymore, also there is not prompt function anymore. delete them
+// now there are rounds that are triggered by an event each one
+// this event declare a winner for that round (not mainGame anymore)
+// also at the end of the event there is a conditional that checks points 
+// if pc or human reachs 3 points declare a winner
+
+
 
 // mainGame();
 
