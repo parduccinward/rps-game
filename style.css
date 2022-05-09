@@ -30,7 +30,7 @@ body {
 }
 
 .game-image img{
-    height: 200px;
+    height: 180px;
     width:auto;
     padding:35px 70px;
 }
@@ -54,7 +54,7 @@ body {
 }
 
 .result-container{
-    font-size: 40px;
+    font-size: 28px;
     padding:36px;
 }
 
