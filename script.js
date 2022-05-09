@@ -4,18 +4,15 @@
 // also at the end of the event there is a conditional that checks points 
 // if pc or human reachs 3 points declare a winner
 
+makeButtonsClickable();
 
 
-// mainGame();
-
-function gameRound(){ //function where the computer and the human battles to death at rps :D
-    let computerSelection = getCPUPlay();
-    let humanSelection = getHumanPlay();
-    let winner = roundWinner(computerSelection, humanSelection);
-    if (winner == "tie"){
-        gameRound();
-    }
-    return winner;
+function playGameRound(e){ //function where the computer and the human battles to death at rps :D
+    let humanPlay = e.target.id;
+    let computerPlay = getCPUPlay();
+    refreshGameImages(humanPlay, computerPlay);
+    let winner = getRoundWinner(humanPlay, computerPlay);
+    console.log(winner);
 }
 
 function declareWinner(){
@@ -24,49 +21,72 @@ function declareWinner(){
 
 
 function getCPUPlay(){
-    let computerMove = Math.floor(Math.random()*(3)+1);
-    if(computerMove===1){
+    let computerPlay = Math.floor(Math.random()*(3)+1);
+    if(computerPlay===1){
         return "rock";
-    }else if (computerMove===2){
+    }else if (computerPlay===2){
         return "paper";
     }else{
         return "scissors";
     }
 }
 
-function getHumanPlay(){
-    
-}
-
-function roundWinner(cpuPlay, humanPlay){
+function getRoundWinner(humanPlay, cpuPlay){
     if (cpuPlay === humanPlay){
-        alert("Tie game. Let's play this round again!");
+        refreshGameText("Tie game. Let's play this round again!");
         return "tie"
     }else if (cpuPlay === "rock" && humanPlay === "scissors"){
-        alert("Rock beats scissors. Computer won this round! D:");
+        refreshGameText("Rock beats scissors. Computer won this round! D:");
         return "cpu"
     }else if (cpuPlay === "rock" && humanPlay === "paper"){
-        alert("Paper beats rock. You won this round! :D");
+        refreshGameText("Paper beats rock. You won this round! :D");
         return "human"
     }else if (cpuPlay === "paper" && humanPlay === "rock"){
-        alert("Paper beats rock. Computer won this round! D:");
+        refreshGameText("Paper beats rock. Computer won this round! D:");
         return "cpu"
     }else if (cpuPlay === "paper" && humanPlay === "scissors"){
-        alert("Scissors beats paper. You won this round! :D");
+        refreshGameText("Scissors beats paper. You won this round! :D");
         return "human"
     }else if (cpuPlay === "scissors" && humanPlay === "rock"){
-        alert("Rock beats scissors. You won this round! :D");
+        refreshGameText("Rock beats scissors. You won this round! :D");
         return "human"
     }else if (cpuPlay === "scissors" && humanPlay === "paper"){
-        alert("Scissors beats paper. Computer won this round! D:");
+        refreshGameText("Scissors beats paper. Computer won this round! D:");
         return "cpu"
     }
 }
 
 
-function createButtonEventListeners(){
+function makeButtonsClickable(){
     const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => {
-        button.addEventListener("click",gameRound);
+        button.addEventListener("click",playGameRound);
     });
 }
+
+function refreshGameText(string){
+    const text = document.querySelector(".result-container");
+    text.textContent = string;
+}
+
+function refreshGameImages(humanPlay, computerPlay){
+    const humanImage = document.querySelector(".human-play img");
+    if(humanPlay === "rock"){
+        humanImage.setAttribute("src","images/rock-fffdfa.png");
+    }else if (humanPlay === "paper"){
+        humanImage.setAttribute("src","images/paper-fffdfa.png");
+    }else{
+        humanImage.setAttribute("src","images/scissors-fffdfa.png");
+    }
+    const cpuImage = document.querySelector(".cpu-play img");
+    if(computerPlay === "rock"){
+        cpuImage.setAttribute("src","images/rock-fffdfa.png");
+    }else if (computerPlay === "paper"){
+        cpuImage.setAttribute("src","images/paper-fffdfa.png");
+    }else{
+        cpuImage.setAttribute("src","images/scissors-fffdfa.png");
+    }
+}
+
+
+
