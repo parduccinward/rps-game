@@ -1,22 +1,41 @@
-// reestructure there is not mainGame anymore, also there is not prompt function anymore. delete them
-// now there are rounds that are triggered by an event each one
-// this event declare a winner for that round (not mainGame anymore)
-// also at the end of the event there is a conditional that checks points 
-// if pc or human reachs 3 points declare a winner
 
-makeButtonsClickable();
-
+let cpuPoints = 0;
+let humanPoints = 0;
+startGame();
 
 function playGameRound(e){ //function where the computer and the human battles to death at rps :D
     let humanPlay = e.target.id;
     let computerPlay = getCPUPlay();
     refreshGameImages(humanPlay, computerPlay);
     let winner = getRoundWinner(humanPlay, computerPlay);
-    console.log(winner);
+    addPointToWinner(winner);
+    checkWinner();
 }
 
-function declareWinner(){
-    
+function checkWinner(){
+    if(cpuPoints < 5 && humanPoints < 5) return;
+
+    if(cpuPoints >= 5){
+        finishGame("CPU WON...");
+    }else if (humanPoints >= 5){
+        finishGame("YOU WON!!! :D");
+    }
+}
+
+function startGame(){
+    makeButtonsClickable();
+}
+
+function restartGame(){
+    restartPoints();
+    removePlayAgainButton();
+    makeButtonsClickable();
+}
+
+function finishGame(message){
+    refreshGameText(message);
+    lockPlayingButtons();
+    addPlayAgainButton();
 }
 
 
@@ -60,9 +79,40 @@ function getRoundWinner(humanPlay, cpuPlay){
 function makeButtonsClickable(){
     const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => {
+        button.disabled = false;
         button.addEventListener("click",playGameRound);
     });
 }
+
+
+function lockPlayingButtons(){
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+        button.disabled = true;
+    })
+}
+
+function addPlayAgainButton(){
+    const layoutContainer = document.querySelector(".layout-container");
+    const playAgainBtn = createPlayAgainButton();
+    layoutContainer.appendChild(playAgainBtn);
+}
+
+function removePlayAgainButton(){
+    const layoutContainer = document.querySelector(".layout-container");
+    const playAgainBtn = document.querySelector(".play-again");
+    layoutContainer.removeChild(playAgainBtn);
+}
+
+
+function createPlayAgainButton(){
+    const playAgainBtn = document.createElement("button");
+    playAgainBtn.classList.add("play-again")
+    playAgainBtn.textContent = "Play Again";
+    playAgainBtn.addEventListener("click",restartGame)
+    return playAgainBtn;
+}
+
 
 function refreshGameText(string){
     const text = document.querySelector(".result-container");
@@ -87,6 +137,40 @@ function refreshGameImages(humanPlay, computerPlay){
         cpuImage.setAttribute("src","images/scissors-fffdfa.png");
     }
 }
+
+function addPointToWinner(winner){
+    const windowHumanScore = document.querySelector(".human-score");
+    const windowCpuScore = document.querySelector(".cpu-score");
+    updatePoints(winner);
+    if(winner === "cpu"){
+        windowCpuScore.textContent=cpuPoints
+    }else{
+        windowHumanScore.textContent = humanPoints
+    }
+}
+
+function restartPoints(){
+    const windowHumanScore = document.querySelector(".human-score");
+    windowHumanScore.textContent= "0";
+    const windowCpuScore = document.querySelector(".cpu-score");
+    windowCpuScore.textContent= "0";
+    cpuPoints = 0;
+    humanPoints = 0;
+}
+
+function updatePoints(winner){
+    if (winner === "tie"){
+        return;
+    }else if (winner === "cpu"){
+        cpuPoints++;
+        return cpuPoints;
+    }else{
+        humanPoints++;
+        return humanPoints;
+    }
+}
+
+
 
 
 
