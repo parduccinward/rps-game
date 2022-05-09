@@ -101,3 +101,11 @@ function roundWinner(cpuPlay, humanPlay){
         return "cpu"
     }
 }
+
+
+function createButtonEventListeners(){
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+        button.addEventListener("click",gameRound);
+    });
+}
