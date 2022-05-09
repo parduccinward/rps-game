@@ -8,16 +8,6 @@
 
 // mainGame();
 
-function mainGame(){
-    let cpuPoints = 0;
-    let humanPoints = 0;
-    for (let i = 0; i<5;i++){
-        let pointsWinner = gameRound();
-        (pointsWinner=="cpu") ? cpuPoints++ : humanPoints++;
-    }
-    declareWinner(cpuPoints,humanPoints);
-}
-
 function gameRound(){ //function where the computer and the human battles to death at rps :D
     let computerSelection = getCPUPlay();
     let humanSelection = getHumanPlay();
@@ -28,8 +18,8 @@ function gameRound(){ //function where the computer and the human battles to dea
     return winner;
 }
 
-function declareWinner(cpuPoints,humanPoints){
-    (cpuPoints>humanPoints) ? alert("Computer won the game! =(") : alert("You won the game! Congrats =)");
+function declareWinner(){
+    
 }
 
 
@@ -45,36 +35,7 @@ function getCPUPlay(){
 }
 
 function getHumanPlay(){
-    let goodMove = false;
-    let humanMove = "";
-    while(goodMove==false){
-        humanMove = prompt("Please enter your move:");
-        goodMove = validateMove(humanMove.toLowerCase());
-    }
-    return humanMove;
-}
-
-function validateMove(move){
-    switch(move){
-        case "rock":
-            return goodMove();
-        case "paper":
-            return goodMove();
-        case "scissors":
-            return goodMove();
-        default:
-            return badMove();
-    }
-}
-
-function goodMove(){
-    alert("You selected your move. Let's see what evils CPU does");
-    return true;
-}
-
-function badMove(){
-    alert("Bad move! Please try again:");
-    return false;
+    
 }
 
 function roundWinner(cpuPlay, humanPlay){
